@@ -1,0 +1,235 @@
+/* Base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    /* height: 100%; */
+}
+
+.advertisement {
+    background-color: #ad1207;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.advertisement marquee {
+    font-family: 'Irish Grover', sans-serif;
+    font-size: 20px;
+    color: rgb(245, 247, 239);
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background-color: #ad1207;
+    color: white;
+    position: sticky;
+    top: 47px;
+    height: 130px;
+    z-index: 999;
+}
+
+header img.logo-left, header img.logo-right {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+}
+
+header img.logo-left {
+    left: 1.5cm;
+}
+
+header img.logo-right {
+    right: 1.5cm;
+}
+
+header div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    text-align: center;
+    margin-left: 5cm;
+    margin-right: 5cm;
+    margin-top: 30px;
+}
+
+header h1 {
+    font-family: 'Protest Revolution', sans-serif;
+    font-size: 40px;
+    margin: 0;
+    margin-left: 2cm;
+}
+
+header p {
+    font-family: 'Afacad', sans-serif;
+    font-size: 20px;
+    margin: 3px 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#cart-items {
+    list-style: none;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.item-price {
+    color: #666;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-btn {
+    width: 30px;
+    height: 30px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.quantity {
+    margin: 0 10px;
+    min-width: 20px;
+    text-align: center;
+}
+
+.remove-btn {
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.total {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: right;
+    margin: 20px 0;
+    color: #ad1207;
+}
+
+.cart-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+button {
+    background: #ad1207;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.checkout-btn {
+    background: #2196F3 !important;
+}
+
+footer {
+    text-align: center;
+    background-color: #ad1207;
+    color: black;
+    /* margin-bottom: 0px; */
+    position: relative;
+    /* bottom: 0; */
+    width: 100%;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    header {
+        padding: 15px;
+        height: 100px;
+    }
+    
+    header h1 {
+        font-size: 24px;
+        margin-left: 0;
+    }
+    
+    header p {
+        font-size: 14px;
+    }
+    
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .quantity-controls {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .cart-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    button {
+        width: 100%;
+    }
+}

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subramanyeswara Agencies - Cool Drinks</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Revolution:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Afacad:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .advertisement {
+            background-color: #ad1207;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .advertisement marquee {
+            font-family: 'Irish Grover', sans-serif;
+            font-size: 20px;
+            color: rgb(245, 247, 239);
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 50px;
+            background-color: #ad1207;
+            color: white;
+            position: sticky;
+            top: 47px;
+            height: 130px;
+            z-index: 999;
+        }
+
+        header img.logo-left, header img.logo-right {
+            width: auto;
+            height: 100%;
+            object-fit: contain;
+            position: absolute;
+        }
+
+        header img.logo-left {
+            left: 1.5cm;
+        }
+
+        header img.logo-right {
+            right: 1.5cm;
+        }
+
+        header div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-grow: 1;
+            text-align: center;
+            margin-left: 5cm;
+            margin-right: 5cm;
+            margin-top: 50px;
+        }
+
+        header h1 {
+            font-family: 'Protest Revolution', sans-serif;
+            font-size: 40px;
+            margin: 0;
+            margin-left: 2cm;
+        }
+
+        header p {
+            font-family: 'Afacad', sans-serif;
+            font-size: 20px;
+            margin: 3px 0;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0;
+            /* padding-left: 20px; */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        .product-section {
+            width: 100%;
+            padding-top: 20px;
+        }
+
+        .product-section h2 {
+            margin-left: 1cm;
+        }
+
+        .product-card {
+            background-color: white;
+            margin: 1.5%;
+            padding: 6px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        @media (min-width: 320px) {
+            .product-card {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .product-card {
+                width: calc(25% - 20px);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .product-card {
+                width: calc(10% - 20px);
+            }
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .product-card h3 {
+            color: #444;
+            font-size: 14px;
+        }
+
+        .product-card p {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .product-card .price {
+            color: #ad1207;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .product-card button {
+            background-color: #ad1207;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 10px;
+            border-radius: 20px;
+        }
+
+        footer {
+            text-align: center;
+            /* padding: 20px; */
+            background-color: #ad1207;
+            color: black;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .extra-info {
+            display: flex;
+            justify-content: space-around;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: #f8f8f8;
+            margin-top: 20px;
+        }
+
+        .extra-info div {
+            text-align: center;
+        }
+
+        #cart {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .bottom-icons {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 1000;
+        }
+
+        .icon {
+            background-color: #ad1207;
+            color: white;
+            border-radius: 50%;
+            padding: 15px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin: 10px 0;
+            position: relative;
+        }
+
+        .icon img {
+            width: 30px;
+            height: 30px;
+        }
+
+        #cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ad1207;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="advertisement">
+        <marquee>🚨 Limited Time Offer: Buy any one 2.25 Ltr cool drink case and get ₹60/- rupees worth three 1 Ltr kinley water bottles for free! 🚨</marquee>
+    </div>
+
+    <header>
+        <img src="murgan.png" alt="Logo" class="logo-left">
+        <div>
+            <h1>Welcome to Subramanyeswara Agencies</h1>
+            <p>Your Trusted Agency For Coca-Cola Products</p>
+            <p>Proprietor : Mr Ramakrishna Namburi</p>
+        </div>
+        <img src="wep1.png" alt="Second Logo" class="logo-right">
+    </header>
+
+    <main>
+        <section class="product-section">
+            <h2>Our Coca-Cola Products</h2>
+            <div class="container">
+                <div class="product-card">
+                    <img src="thums2.25.webp" alt="Thums Up 2.25L">
+                    <h3>Thums Up 2.25L Case</h3>
+                    <p>Refresh yourself with Thums Up</p>
+                    <p class="price">₹780</p>
+                    <button onclick="addToCart('Thums Up 2.25L', 780)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="coke2.5.webp" alt="Coca Cola 2.25L">
+                    <h3>Coca Cola 2.25L Case</h3>
+                    <p>The classic taste of Coca Cola!</p>
+                    <p class="price">₹770</p>
+                    <button onclick="addToCart('Coca Cola 2.25L', 770)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="sprite2.5.webp" alt="Sprite 2.25L">
+                    <h3>Sprite 2.25L Case</h3>
+                    <p>Enjoy the refreshing lemon-lime taste!</p>
+                    <p class="price">₹780</p>
+                    <button onclick="addToCart('Sprite 2.25L', 780)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="fanta2.5.webp" alt="Fanta 2.25L">
+                    <h3>Fanta 2.25L Case</h3>
+                    <p>Delicious orange-flavored refreshment!</p>
+                    <p class="price">₹760</p>
+                    <button onclick="addToCart('Fanta 2.25L', 760)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="limca2.5.jpg" alt="Limca 2.25L">
+                    <h3>Limca 2.25L Case</h3>
+                    <p>The ultimate lemon drink for freshness!</p>
+                    <p class="price">₹780</p>
+                    <button onclick="addToCart('Limca 2.25L', 780)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="maza1.7.jpeg" alt="Maaza 1.75L">
+                    <h3>Maaza 1.75L</h3>
+                    <p>Real taste of hand picked alphonso mangos.</p>
+                    <p class="price">₹1250</p>
+                    <button onclick="addToCart('Maaza 1.75L', 1250)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="kin2l.webp" alt="Kinley 2L">
+                    <h3>Kinley Water 2L Case</h3>
+                    <p>Pure and refreshing drinking water.</p>
+                    <p class="price">₹250</p>
+                    <button onclick="addToCart('Kinley Water 2L', 250)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="kin1.jpg" alt="Kinley 1L">
+                    <h3>Kinley Water 1L Case</h3>
+                    <p>Pure and refreshing drinking water.</p>
+                    <p class="price">₹200</p>
+                    <button onclick="addToCart('Kinley Water 1L', 200)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="halfkinley.png" alt="Kinley 1/2L">
+                    <h3>Kinley Water 1/2L Case</h3>
+                    <p>Pure and refreshing drinking water.</p>
+                    <p class="price">₹210</p>
+                    <button onclick="addToCart('Kinley Water 1/2L', 210)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="1.25thums.webp" alt="Thumsup 1.25L">
+                    <h3>Thumsup 1.25L Case</h3>
+                    <p>feel the taste of thunder.</p>
+                    <p class="price">₹790</p>
+                    <button onclick="addToCart('Thumsup 1.25L',790)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="sprite1.25.webp" alt="Sprite 1.25L">
+                    <h3>Sprite 1.25L Case</h3>
+                    <p>chill with sprite in the summer.</p>
+                    <p class="price">₹790</p>
+                    <button onclick="addToCart('Sprite 1.25L',790)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="maza1.2.jpg" alt="Maaza 1.2L">
+                    <h3>Maaza 1.2L Case</h3>
+                    <p>Real taste of hand picked alphonso mangos.</p>
+                    <p class="price">₹790</p>
+                    <button onclick="addToCart('Maaza 1.2L', 790)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="pulpy1ltr.jpg" alt="Minute Maid PulpyOrange 1L">
+                    <h3>Minute Maid PulpyOrange 1L Case</h3>
+                    <p>Real taste of pulpy oranges as a drink.</p>
+                    <p class="price">₹750</p>
+                    <button onclick="addToCart('Minute Maid PulpyOrange 1L',750)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="thums750.webp" alt="Thumsup 750ml">
+                    <h3>Thumsup 750ml Case</h3>
+                    <p>Refresh yourself with Thums Up.</p>
+                    <p class="price">₹830</p>
+                    <button onclick="addToCart('Thumsup 750ml',830)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="soda750.jpg" alt="Kinley ClubSoda 750ml">
+                    <h3>Kinley Club Soda 750ml Case</h3>
+                    <p>Enjoy refreshing Club Soda.</p>
+                    <p class="price">₹450</p>
+                    <button onclick="addToCart('Kinley Water 1L', 450)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="sprite750.webp" alt="Sprite 750ml">
+                    <h3>Sprite 750ml Case</h3>
+                    <p>Enjoy the refreshing lemon-lime taste</p>
+                    <p class="price">₹830</p>
+                    <button onclick="addToCart('Sprite 750ml',830)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="limca75.webp" alt="Limca 750ml">
+                    <h3>Limca 750ml Case</h3>
+                    <p>feel the taste of lemons .</p>
+                    <p class="price">₹830</p>
+                    <button onclick="addToCart('Limca 750ml',830)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="dietcoke750.webp" alt="Diet Coke 750ml">
+                    <h3>Diet Coke 750ml Case</h3>
+                    <p>Coke with zero sugars.</p>
+                    <p class="price">₹800</p>
+                    <button onclick="addToCart('Diet Coke 750ml',800)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="fanta75.webp" alt="Fanta 750ml">
+                    <h3>Fanta 750ml Case</h3>
+                    <p>Feel the taste of real oranges.</p>
+                    <p class="price">₹830</p>
+                    <button onclick="addToCart('Fanta 750ml',830)">Add to Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <img src="maza600.webp" alt="Maaza 600ml">
+                    <h3>Maaza 600ml Case</h3>
+                    <p>Real taste of hand picked alphonso mangos.</p>
+                    <p class="price">₹690</p>
+                    <button onclick="addToCart('Maaza 600ml', 690)">Add to Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <img src="charged.webp" alt="Charged 250 ml">
+                    <h3>Charged 250 ml Case</h3>
+                    <p>Recharge your energy get Charged.</p>
+                    <p class="price">₹450</p>
+                    <button onclick="addToCart('Charged 250 ml', 450)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="thumsup250.webp" alt="Thumsup 250 ml">
+                    <h3>Thumsup 250 ml Case</h3>
+                    <p>Thumsup feel the thunder.</p>
+                    <p class="price">₹480</p>
+                    <button onclick="addToCart('Thumsup 250 ml', 480)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="sprite250.webp" alt="Sprite 250 ml">
+                    <h3>Sprite 250 ml Case</h3>
+                    <p>Sprite refresh with chota pack.</p>
+                    <p class="price">₹480</p>
+                    <button onclick="addToCart('Sprite 250 ml', 480)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="soda25.png" alt="Kinley ClubSoda 250ml">
+                    <h3>Kinley ClubSoda 250ml Case</h3>
+                    <p>Enjoy refreshing Club Soda.</p>
+                    <p class="price">₹250</p>
+                    <button onclick="addToCart('Kinley ClubSoda 250ml',250)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="dietcoke250.webp" alt="Diet Coke 250ml">
+                    <h3>Diet Coke 250ml Case</h3>
+                    <p>Coke with zero sugars.</p>
+                    <p class="price">₹450</p>
+                    <button onclick="addToCart('Diet Coke 250ml',450)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="limca250.jpeg" alt="Limca 250ml">
+                    <h3>Limca 250ml Case</h3>
+                    <p>Limca feel the taste of lemon.</p>
+                    <p class="price">₹480</p>
+                    <button onclick="addToCart('Limca 250ml',480)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="fanta250.jpeg" alt="fanta 250ml">
+                    <h3>fanta 250ml Case</h3>
+                    <p>feel the flavour of the indian oranges.</p>
+                    <p class="price">₹480</p>
+                    <button onclick="addToCart('fanta 250ml',480)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="applefanta.jpg" alt="Apple fanta 250ml">
+                    <h3>Apple fanta 250ml Case</h3>
+                    <p>Real taste of pulpy Apples as a drink.</p>
+                    <p class="price">₹480</p>
+                    <button onclick="addToCart('Apple fanta 250ml',480)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="colour250.webp" alt="Minute Maid Colour 250ml">
+                    <h3>Minute Maid Colour 250ml Case</h3>
+                    <p> grape juice drink made with hand-picked grapes.</p>
+                    <p class="price">₹480</p>
+                    <button onclick="addToCart('Minute Maid Colour 250ml',480)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="maza250.jpg" alt="Maaza 250ml">
+                    <h3>Maaza 250ml Case</h3>
+                    <p>Real taste of alphonso mangos.</p>
+                    <p class="price">₹590</p>
+                    <button onclick="addToCart('Maaza 250ml',590)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="pulpy250.jpg" alt="Minute Maid PulpyOrange 250ml">
+                    <h3>Minute Maid PulpyOrange 250ml Case</h3>
+                    <p>Real taste of pulpy oranges as a drink.</p>
+                    <p class="price">₹660</p>
+                    <button onclick="addToCart('Minute Maid PulpyOrange 250ml',660)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="tetramaza.png" alt="Maaza Tetra 150ml">
+                    <h3>Maaza Tetra 150ml Case</h3>
+                    <p>Real taste of alphonso mangos.</p>
+                    <p class="price">₹330</p>
+                    <button onclick="addToCart('Maaza Tetra 150ml',330)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="appletetra.webp" alt="Apple Tetra 150ml">
+                    <h3>Apple Tetra 150ml Case</h3>
+                    <p>feel the original flavour of Apples .</p>
+                    <p class="price">₹330</p>
+                    <button onclick="addToCart('Apple Tetra 150ml',330)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="rgbthums.png" alt="RGB thumsup 200ml">
+                    <h3>RGB thumsup Case</h3>
+                    <p>feel the taste of thunder.</p>
+                    <p class="price">₹190</p>
+                    <button onclick="addToCart('RGB thumsup',190)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="rgbsprite.jpg" alt="RGB sprite 200ml">
+                    <h3>RGB sprite Case</h3>
+                    <p>Chill with lemon flavoured sprite.</p>
+                    <p class="price">₹190</p>
+                    <button onclick="addToCart('RGB sprite',190)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="rgbmaza.jpg" alt="RGB Maaza 200ml">
+                    <h3>RGB Maaza Case</h3>
+                    <p>Real taste of hand picked alphonso mangos.</p>
+                    <p class="price">₹300</p>
+                    <button onclick="addToCart('RGB Maaza',300)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="rgbcoke.png" alt="RGB Coke 200ml">
+                    <h3>RGB Coke Case</h3>
+                    <p>Feel the original taste of coke.</p>
+                    <p class="price">₹190</p>
+                    <button onclick="addToCart('RGB Coke',190)">Add to Cart</button>
+                </div>
+                    <div class="product-card">
+                        <img src="rgblimca.avif" alt="RGB Limca 200ml">
+                        <h3>RGB Limca </h3>
+                        <p>Limca feel the taste of lemon.</p>
+                        <p class="price">₹190</p>
+                        <button onclick="addToCart('RGB Limca ',190)">Add to Cart</button>
+                </div>
+        
+                <div class="product-card">
+                    <img src="rgbfanta.png" alt="RGB Fanta 200ml">
+                    <h3>RGB Fanta Case</h3>
+                    <p>Feel the taste of real oranges.</p>
+                    <p class="price">₹190</p>
+                    <button onclick="addToCart('RGB Fanta',190)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="rgbkinleysoda.png" alt="RGB KinleySoda 200ml">
+                    <h3>RGB KinleySoda 200ml</h3>
+                    <p>Enjoy refreshing Club Soda.</p>
+                    <p class="price">₹150</p>
+                    <button onclick="addToCart('RGB KinleySoda 200ml',150)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="thumstin.jpg" alt="ThumsUp Tin">
+                    <h3>ThumsUp Tin Case</h3>
+                    <p>feel the taste of thunder.</p>
+                    <p class="price">₹890</p>
+                    <button onclick="addToCart('ThumsUp Tin',890)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="spritetin.webp" alt="Sprite Tin">
+                    <h3>Sprite Tin Case</h3>
+                    <p>Chill with Sprite lemon flavoured.</p>
+                    <p class="price">₹890</p>
+                    <button onclick="addToCart('Sprite Tin',890)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="coketin.webp" alt="Coke Tin">
+                    <h3>Coke Tin Case</h3>
+                    <p>Coke Original recipe.</p>
+                    <p class="price">₹890</p>
+                    <button onclick="addToCart('Coke Tin',890)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="dietcoketin.jpg" alt="Diet Coke Tin">
+                    <h3>Diet Coke Tin Case</h3>
+                    <p>Coke with zero sugars.</p>
+                    <p class="price">₹850</p>
+                    <button onclick="addToCart('Diet Coke Tin',850)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="fantatin.webp" alt="Fanta Tin">
+                    <h3>Fanta TinCase</h3>
+                    <p>Taste of real oranges.</p>
+                    <p class="price">₹890</p>
+                    <button onclick="addToCart('Fanta Tin',890)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="predetortin.png" alt="Predator Tin">
+                    <h3>Predator Tin Case</h3>
+                    <p>Predator Energy drink.</p>
+                    <p class="price">₹930</p>
+                    <button onclick="addToCart('Predator Tin',930)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="monistertin.jpg" alt="Monster Tin">
+                    <h3>Monster Tin Case</h3>
+                    <p>Monster Energy drink.</p>
+                    <p class="price">₹1150</p>
+                    <button onclick="addToCart('Monster Tin',1150)">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="limcatin.jpg" alt="Limca Tin">
+                    <h3>Limca Tin Case</h3>
+                    <p>feel the taste of lemons .</p>
+                    <p class="price">₹890</p>
+                    <button onclick="addToCart('Limca Tin',890)">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="cart">
+            <h3>Your Cart</h3>
+            <ul id="cart-items"></ul>
+            <p class="total">Total: ₹<span id="total-price">0</span></p>
+            <button onclick="clearCart()">Clear Cart</button>
+        </section>
+
+        <section class="extra-info">
+            <div>
+                <h3>Delivery Modes</h3>
+                <p>✅ Instore Pickup</p>
+                <p>✅ Doorstep Delivery</p>
+            </div>
+            <div>
+                <h3>Payment Solutions</h3>
+                <p>💳 Credit & Debit Cards</p>
+                <p>🏦 Net Banking</p>
+                <p>💰 Cash Pickup</p>
+                <p>📲 PhonePe, MobiKwik, Axis Bank</p>
+            </div>
+            <div>
+                <h3>Company Information</h3>
+                <p>FSSAI License No.: 10012044000043</p>
+                <p>Subramanyeswara Agencies,</p>
+                <p>Main Road,Aminabad,Phirangipuraam, Guntur District, Andhra Pradesh</p>
+                <p>Phirangipuram-522529</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Subramanyeswara Agencies. All rights reserved.</p>
+        <p>&copy; Website designed and developed by Mr.kondrakunta prasanth babu.</p>
+    </footer>
+    
+    <div class="bottom-icons">
+        <a href="Cart.html">
+        <div class="icon" onclick="viewCart()">
+            
+                <img src="main cart.png" alt="Cart Icon">
+                
+            <span id="cart-count"></span>
+        </div>
+        </a>
+        <a href="Customer_care.html">
+        <div class="icon" onclick="showCustomerCare()">
+            <img src="ccaremain.png" >
+        </div>
+    </a>
+    </div>
+
+    <script>
+        let cart = [];
+        let totalPrice = 0;
+        function addToCart(product, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let totalPrice = parseFloat(localStorage.getItem('totalPrice')) || 0;
+
+            const existingProduct = cart.find(item => item.product === product);
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+                existingProduct.price += price;
+            } else {
+                cart.push({ product, price, quantity: 1 });
+            }
+            totalPrice += price;
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('totalPrice', totalPrice);
+
+            updateCart(); 
+            alert(product + " added to cart!");
+        }
+
+
+
+
+
+        function updateCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalPrice = parseFloat(localStorage.getItem('totalPrice')) || 0;
+
+            const cartItems = document.getElementById('cart-items');
+            const totalPriceElement = document.getElementById('total-price');
+            const cartCount = document.getElementById('cart-count');
+
+            cartItems.innerHTML = '';
+
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    ${item.product} (x${item.quantity}) - ₹${item.price}
+                    <button onclick="removeFromCart('${item.product}')">Remove</button>
+                `;
+                cartItems.appendChild(li);
+            });
+
+            totalPriceElement.textContent = `₹${totalPrice}`;
+
+            let itemCount = 0;
+            cart.forEach(item => {
+                itemCount += item.quantity;
+            });
+            cartCount.textContent = itemCount;
+        }
+
+
+
+
+        function viewCart() {
+            const cartSection = document.getElementById('cart');
+            cartSection.style.display = cartSection.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function clearCart() {
+            cart = [];
+            totalPrice = 0;
+            updateCart();
+        }
+
+        // function showCustomerCare() {
+        //     alert("Customer Care Clicked");
+        // }
+    </script>
+</body>
+</html>

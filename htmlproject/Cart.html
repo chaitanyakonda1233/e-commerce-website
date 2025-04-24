@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subramanyeswara Agencies - Your Cart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Revolution:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Afacad:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .cart-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .checkout-btn {
+            background-color: #2196F3 !important;
+        }
+        .cart-item {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head> 
+<body>
+    <div class="advertisement">
+        <marquee>🚨 Limited Time Offer: Buy any one 2.25 Ltr cool drink case and get ₹60/- rupees worth three 1 Ltr kinley water bottles for free! 🚨</marquee>
+    </div>
+
+    <header>
+        <img src="murgan.png" alt="Logo" class="logo-left">
+        <div>
+            <h1>Your Shopping Cart</h1>
+            <p>Subramanyeswara Agencies</p>
+            <p>Proprietor : Mr Ramakrishna Namburi</p>
+        </div>
+        <img src="wep1.png" alt="Second Logo" class="logo-right">
+    </header>
+
+    <main>
+        <div class="container">
+            <ul id="cart-items"></ul>
+            <p class="total">Total: ₹<span id="total-price">0</span></p>
+            <div class="cart-actions">
+                <button onclick="clearCart()">Clear Cart</button>
+                <button onclick="checkout()" class="checkout-btn">Proceed to Checkout</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Subramanyeswara Agencies. All rights reserved.</p>
+        <p>&copy; Website designed and developed by Mr.kondrakunta prasanth babu.</p>
+    </footer>
+
+    <script src="updateCart.js"></script>
+    <script>
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalPriceElement = document.getElementById('total-price');
+            let totalPrice = 0;
+
+            cartItemsContainer.innerHTML = '';
+
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'cart-item';
+                li.innerHTML = `
+                    ${item.product} (x${item.quantity}) - ₹${item.price}
+                    <button onclick="removeFromCart('${item.product}')">Remove</button>
+                `;
+                cartItemsContainer.appendChild(li);
+                totalPrice += item.price;
+            });
+
+            totalPriceElement.textContent = totalPrice;
+            updateCartCount();
+        }
+
+
+
+        function removeFromCart(product) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let totalPrice = parseFloat(localStorage.getItem('totalPrice')) || 0;
+
+            const productIndex = cart.findIndex(item => item.product === product);
+
+            if (productIndex !== -1) {
+                const removedItem = cart[productIndex];
+                totalPrice -= removedItem.price;
+                cart.splice(productIndex, 1);
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('totalPrice', totalPrice);
+
+            loadCart();
+        }
+
+
+
+        function clearCart() {
+            localStorage.removeItem('cart');
+            loadCart();
+        }
+
+        window.onload = loadCart;
+    </script>
+    <script>
+        function checkout() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            alert('Order placed successfully! Total: ₹' + document.getElementById('total-price').textContent);
+            clearCart();
+        }
+    </script>
+</body>
+</html>
