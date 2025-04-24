@@ -1,6 +1,7 @@
 # Subramanyeswara Agencies E-commerce Website
 
-![Project Logo](https://via.placeholder.com/150x50?text=Subramanyeswara+Agencies)
+![image](https://github.com/user-attachments/assets/81b93341-057c-4f2f-976c-a06464d8e035)
+
 
 A modern e-commerce platform for Subramanyeswara Agencies, a distributor of Coca-Cola products.
 
